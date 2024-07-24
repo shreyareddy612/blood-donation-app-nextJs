@@ -1,5 +1,7 @@
 // import { PaperClipIcon } from '@heroicons/react/20/solid'
+//@ts-ignore
 
+"use client";
 export default function UserProfile({params}:any) {
     return (
       <div className="p-4 pt-8 m-8">
