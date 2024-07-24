@@ -6,6 +6,7 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image';
 
 
 
@@ -122,7 +123,7 @@ const people = [
 
 
 
-export default function page() {
+export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -169,11 +170,11 @@ export default function page() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Donate blood</span>
-                <img
+                <Image
                   alt=""
                   src="https://i.pinimg.com/originals/c3/62/20/c3622024d8bcfbe35454360f79f811af.png"
                   className="h-8 w-auto"
-                />
+                  />
               </a>
               <button
                 type="button"
@@ -273,7 +274,7 @@ export default function page() {
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                   <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                     <div className="relative">
-                      <img
+                      <Image
                         alt=""
                         src="https://as2.ftcdn.net/v2/jpg/02/68/65/19/1000_F_268651925_LhOxhm21382NrUmcWQcnTKdvnbM9cgjo.jpg"
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -283,7 +284,7 @@ export default function page() {
                   </div>
                   <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                     <div className="relative">
-                      <img
+                      <Image
                         alt=""
                         src="https://as2.ftcdn.net/v2/jpg/01/34/60/75/1000_F_134607500_YwbnEFFAWpGG0FSwj2fJExjGLjwHWH8v.jpg"
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -291,7 +292,7 @@ export default function page() {
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
                     <div className="relative">
-                      <img
+                      <Image
                         alt=""
                         src="https://as2.ftcdn.net/v2/jpg/01/72/84/49/1000_F_172844949_pSuIuFzQye7wCcXHo3b5VRRnfRlIrYPX.jpg"
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -301,7 +302,7 @@ export default function page() {
                   </div>
                   <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
                     <div className="relative">
-                      <img
+                      <Image
                         alt=""
                         src="https://cdn.vectorstock.com/i/500p/24/45/blood-transfusion-cartoon-character-vector-21212445.jpg"
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -309,7 +310,7 @@ export default function page() {
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
                     <div className="relative">
-                      <img
+                      <Image
                         alt=""
                         src="https://i.pinimg.com/474x/7c/2e/df/7c2edfb09871526f87cc090d7773e299.jpg"
                         className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -355,7 +356,7 @@ export default function page() {
           {people.map((person) => (
             <li key={person.name}>
               <div className="flex items-center gap-x-6">
-                <img alt="" src={person.imageUrl} className="h-16 w-16 rounded-full" />
+                <Image alt="" src={person.imageUrl} className="h-16 w-16 rounded-full" />
                 <div>
                   <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
                   <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
@@ -376,35 +377,35 @@ export default function page() {
             Trusted by the world’s most innovative teams
           </h2>
           <div className="mx-auto mt-10 grid grid-cols-4 items-start gap-x-8 gap-y-10 sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:grid-cols-5">
-            <img
+            <Image
               alt="Transistor"
               src="https://tailwindui.com/img/logos/transistor-logo-gray-900.svg"
               width={158}
               height={48}
               className="col-span-2 max-h-12 w-full object-contain object-left lg:col-span-1"
             />
-            <img
+            <Image
               alt="Reform"
               src="https://tailwindui.com/img/logos/reform-logo-gray-900.svg"
               width={158}
               height={48}
               className="col-span-2 max-h-12 w-full object-contain object-left lg:col-span-1"
             />
-            <img
+            <Image
               alt="Tuple"
               src="https://tailwindui.com/img/logos/tuple-logo-gray-900.svg"
               width={158}
               height={48}
               className="col-span-2 max-h-12 w-full object-contain object-left lg:col-span-1"
             />
-            <img
+            <Image
               alt="SavvyCal"
               src="https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg"
               width={158}
               height={48}
               className="col-span-2 max-h-12 w-full object-contain object-left lg:col-span-1"
             />
-            <img
+            <Image
               alt="Statamic"
               src="https://tailwindui.com/img/logos/statamic-logo-gray-900.svg"
               width={158}

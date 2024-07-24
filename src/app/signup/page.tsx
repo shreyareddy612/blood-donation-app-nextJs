@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import Image from "next/image";
 
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -63,7 +64,7 @@ export default function LoginPage() {
            "Page Loading"
          : 
          <div className="mx-auto w-full max-w-lg">
-           <img
+           <Image
              className="mx-auto h-24 w-auto"
              src="https://img.freepik.com/premium-vector/black-contact-person-icon-white-background_833641-1126.jpg"
              alt="Person Logo"

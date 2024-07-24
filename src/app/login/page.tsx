@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 // import {axios} from "axios";
 
 export default function LoginPage() {
@@ -22,7 +23,7 @@ export default function LoginPage() {
     
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="mx-auto w-full max-w-lg">
-            <img
+            <Image
               className="mx-auto h-24 w-auto"
               src="https://img.freepik.com/premium-vector/black-contact-person-icon-white-background_833641-1126.jpg"
               alt="Person Logo"
