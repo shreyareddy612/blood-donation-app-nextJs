@@ -12,7 +12,7 @@ export default function Contact() {
 
   const navigation = [
     { name: "Request Form", href: "/requestForm" },
-    { name: "Donars", href: "/donars" },
+    { name: "Donors", href: "/donars" },
     { name: "Blood Banks & Hospitals", href: "/hospitals" },
     { name: "Contact", href: "/contact" },
   ];
@@ -70,7 +70,7 @@ export default function Contact() {
               <div>
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
                 <p className="mt-4 leading-7 text-gray-600">
-                  Feel free to contact us if you are having trouble finding donars or for any other issues!
+                  Feel free to contact us if you are having trouble finding donors or for any other issues!
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">

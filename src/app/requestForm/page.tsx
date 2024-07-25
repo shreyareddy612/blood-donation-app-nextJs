@@ -20,7 +20,7 @@ export default function RequestForm() {
   ];
   const navigation = [
     { name: "Request Form", href: "/requestForm" },
-    { name: "Donars", href: "/donars" },
+    { name: "Donors", href: "/donars" },
     { name: "Blood Banks & Hospitals", href: "/hospitals" },
     { name: "Contact", href: "/contact" },
   ];

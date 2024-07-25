@@ -20,7 +20,7 @@ export default function Donars() {
   ];
   const navigation = [
     { name: "Request Form", href: "/requestForm" },
-    { name: "Donars", href: "/donars" },
+    { name: "Donors", href: "/donars" },
     { name: "Blood Banks & Hospitals", href: "/hospitals" },
     { name: "Contact", href: "/contact" },
   ];
@@ -109,7 +109,7 @@ export default function Donars() {
         onSubmit={onRequestingSubmit}
         className="mb-8 space-y-4 mt-20 pt-8 pl-72 bg-red-100"
       >
-        <h2 className="text-xl font-bold mb-4">Donar Application Form</h2>
+        <h2 className="text-xl font-bold mb-4">Donor Application Form</h2>
         <div className="flex flex-wrap gap-4">
           <div className="flex flex-col w-full sm:w-1/2">
             <label htmlFor="name" className="mb-1">
@@ -239,7 +239,7 @@ export default function Donars() {
         <div className="mt-4 pt-4 flex items-center">
           <div className="sm:flex-auto">
             <h1 className="px-8 text-base font-semibold leading-6 text-gray-900">
-              Donars List
+              Donors List
             </h1>
             <p className="px-8 mt-2 text-sm text-gray-700">
               A list of all the people ready to donate blood.

@@ -14,7 +14,7 @@ export default function Hospitals() {
 
   const navigation = [
     { name: "Request Form", href: "/requestForm" },
-    { name: "Donars", href: "/donars" },
+    { name: "Donors", href: "/donars" },
     { name: "Blood Banks & Hospitals", href: "/hospitals" },
     { name: "Contact", href: "/contact" },
   ];
@@ -135,7 +135,7 @@ export default function Hospitals() {
   <div className="py-12">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900">List of few blood banks and hospitals</h2>
                 <p className="mt-4 leading-7 text-gray-600">
-                  Contact our tied up hospitals to find donars!
+                  Contact our tied up hospitals to find donors!
                 </p>
               </div>
   </div>

@@ -10,14 +10,14 @@ import Link from "next/link";
 
 const navigation = [
   { name: "Request Form", href: "/requestForm" },
-  { name: "Donars", href: "/donars" },
+  { name: "Donors", href: "/donars" },
   { name: "Blood Banks & Hospitals", href: "/hospitals" },
   { name: "Contact", href: "/contact" },
 ];
 
 const stats = [
   { id: 1, name: "People lives saved", value: "44 million" },
-  { id: 2, name: "Donars donated", value: "10,000" },
+  { id: 2, name: "Donors donated", value: "10,000" },
   { id: 3, name: "New users annually", value: "46,000" },
 ];
 
@@ -149,7 +149,7 @@ export default function Page() {
                         href="/donars"
                         className="rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                       >
-                        Find Donars
+                        Find Donors
                       </Link>
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export default function Page() {
             <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
               <div className="max-w-2xl">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                  Meet our valuable donars
+                  Meet our valuable donors
                 </h2>
               </div>
               <ul
