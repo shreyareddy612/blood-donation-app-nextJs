@@ -1,4 +1,7 @@
 // import { PaperClipIcon } from '@heroicons/react/20/solid'
+//@ts-ignore
+
+"use client";
 
 export default function ProfilePage() {
   return (
