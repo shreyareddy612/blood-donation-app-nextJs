@@ -21,39 +21,32 @@ const stats = [
   { id: 3, name: "New users annually", value: "46,000" },
 ];
 
-
-
 const people = [
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Shreekar J",
+    role: "Student",
+
   },
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Sarah",
+    role: "Software Engineer",
   },
   {
-    name: "Leslie Alexander",
+    name: "Raju",
     role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
+    },
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
+    name: "Leslie",
+    role: "Farmer",
+     },
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
+    name: "Ramu",
+    role: "Chef",
+    },
+    {
+      name: "Anjan",
+      role: "Employee",
+      },
   // More people...
 ];
 
@@ -67,11 +60,11 @@ export default function Page() {
           aria-label="Global"
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         >
-         <div className="flex lg:flex-1">
-      <Link href="/" className="text-md font-bold leading-8 text-red-900">
-        BLOOD CONNECT
-      </Link>
-    </div>
+          <div className="flex lg:flex-1">
+            <Link href="/" className="text-md font-bold leading-8 text-red-900">
+              BLOOD CONNECT
+            </Link>
+          </div>
 
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
@@ -152,10 +145,12 @@ export default function Page() {
                     </h1>
 
                     <div className="mt-10 flex items-center gap-x-6">
-                    <Link href="/donars" className="rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
-                    Find Donars
-      </Link>
-
+                      <Link
+                        href="/donars"
+                        className="rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                      >
+                        Find Donars
+                      </Link>
                     </div>
                   </div>
                   <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
@@ -198,25 +193,19 @@ export default function Page() {
                 className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
               >
                 {people.map((person) => (
-                  <li key={person.name}>
-                    <div className="flex items-center gap-x-6">
-                      <Image
-                        alt=""
-                        src=""
-                        className="h-16 w-16 rounded-full"
-                        width={158}
-                        height={48}
-                      />
-                      <div>
-                        <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
-                          {person.name}
-                        </h3>
-                        <p className="text-sm font-semibold leading-6 text-indigo-600">
-                          {person.role}
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                <li key={person.name} className="rounded-lg shadow-lg overflow-hidden">
+                <div className="bg-red-300 flex items-center gap-x-6 p-2 rounded-lg">
+                  <div className="bg-white p-2 rounded-lg shadow-md flex-1">
+                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm font-semibold leading-6 text-indigo-600">
+                      {person.role}
+                    </p>
+                  </div>
+                </div>
+              </li>
+              
                 ))}
               </ul>
             </div>

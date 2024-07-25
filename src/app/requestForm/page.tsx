@@ -38,7 +38,7 @@ export default function RequestForm() {
 
   const onRequestingSubmit = async (event: any) => {
     event.preventDefault();
-    alert("1");
+;
 
     try {
       const receiverData = receiver;
@@ -47,6 +47,7 @@ export default function RequestForm() {
       const response = await axios.post("/api/users/receiverForm", receiver);
 
       console.log(response, "apiiii");
+      location.reload();
       // route.push('/login');
       // routeToLogin();
     } catch (error: any) {
@@ -225,7 +226,7 @@ export default function RequestForm() {
           <button
             // onClick={onRequestingSubmit}
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+            className="rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
           >
             Submit
           </button>
