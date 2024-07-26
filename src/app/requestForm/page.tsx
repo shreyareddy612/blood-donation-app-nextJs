@@ -204,23 +204,33 @@ export default function RequestForm() {
           </div>
         </div>
         <div className="flex flex-wrap gap-4">
-          <div className="flex flex-col w-full sm:w-1/2">
-            <label htmlFor="bloodGroup" className="mb-1">
-              Blood Group:
-            </label>
-            <input
-              type="text"
-              name="bloodGroup"
-              id="bloodGroup"
-              className="rounded-md border border-gray-300 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              required
-              value={receiver.bloodGroup}
-              onChange={(e) =>
-                setReceiver({ ...receiver, bloodGroup: e.target.value })
-              }
-            />
-          </div>
-        </div>
+  <div className="flex flex-col w-full sm:w-1/2">
+    <label htmlFor="bloodGroup" className="mb-1">
+      Blood Group:
+    </label>
+    <select
+      name="bloodGroup"
+      id="bloodGroup"
+      className="rounded-md border border-gray-300 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+      required
+      value={receiver.bloodGroup}
+      onChange={(e) =>
+        setReceiver({ ...receiver, bloodGroup: e.target.value })
+      }
+    >
+      <option value="">Select Blood Group</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+  </div>
+</div>
+
 
         <div className="flex items-center mt-4">
           <button
@@ -234,16 +244,40 @@ export default function RequestForm() {
       </form>
 
       <div className="bg-red-200 px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="mt-4 pt-4 flex items-center">
-          <div className="sm:flex-auto">
-            <h1 className="px-8 text-base font-semibold leading-6 text-gray-900">
-              Request List
-            </h1>
-            <p className="px-8 mt-2 text-sm text-gray-700">
-              A list of all the people requesting for blood.
-            </p>
-          </div>
-        </div>
+      <div className="mt-4 pt-4 flex items-center justify-between">
+  <div className="sm:flex-auto">
+    <h1 className="px-8 text-xl font-semibold leading-7 text-gray-900">
+      Request List
+    </h1>
+    <p className="px-8 mt-2 text-sm text-gray-600">
+      A list of all the people requesting for blood.
+    </p>
+  </div>
+  <div className="ml-8">
+    <label htmlFor="bloodGroupFilter" className="mr-3 text-sm font-medium text-gray-700">
+      Filter by Blood Group:
+    </label>
+    <select
+      id="bloodGroupFilter"
+      className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+      style={{ minWidth: '150px' }}
+      // value={bloodGroup}
+      // onChange={(e) => setBloodGroup(e.target.value)}
+    >
+      <option value="">All</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+  </div>
+</div>
+
+
         <div className="mt-8 flow-root">
           <div className="overflow-x-auto">
             <div className=" inline-block min-w-full  align-middle sm:px-6 lg:px-8">
