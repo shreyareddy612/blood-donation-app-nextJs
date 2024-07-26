@@ -15,11 +15,12 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
+
 const stats = [
-  { id: 1, name: "People lives saved", value: "44 million" },
-  { id: 2, name: "Donors donated", value: "10,000" },
-  { id: 3, name: "New users annually", value: "46,000" },
-];
+  { id: 1, name: "Blood Units Collected", value: "5,000" },
+  { id: 2, name: "Registered Donors", value: "2,500" },
+  { id: 3, name: "Patients Helped", value: "1,200"}
+]
 
 const people = [
   {
@@ -88,6 +89,10 @@ export default function Page() {
         </nav>
       </header>
       <main>
+
+
+
+        
         <div className="relative isolate">
           <svg
             aria-hidden="true"
@@ -132,7 +137,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          {/* <div>
             <div className="overflow-hidden">
               <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
                 <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
@@ -159,7 +164,99 @@ export default function Page() {
                 </div>
               </div>
             </div>
+          </div> */}
+
+
+
+<div>
+         
+          <div className="overflow-hidden">
+            <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
+              <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+                <div className="relative w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                    Be the hero someone needs today...
+                  </h1>
+                  <p className="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+                    Donate Blood
+                  </p>
+                 
+                  <div className="mt-10 flex items-center gap-x-6">
+                      <Link
+                        href="/donars"
+                        className="rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                      >
+                        Find Donors
+                      </Link>
+                    </div>
+                  
+                </div>
+                <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+                  <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
+                    <div className="relative">
+                      
+                   
+
+                  <Image
+                    alt="SavvyCal"
+                    src="/images/poster1.jpg"
+                    width={158}
+                    height={48}
+                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                  />
+
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                  </div>
+                  <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
+                    <div className="relative">
+                    <Image
+                    alt="SavvyCal"
+                    src="/images/poster6.jpeg"
+                    width={158}
+                    height={48}
+                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                  />
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                    <div className="relative">
+                    <Image
+                    alt="SavvyCal"
+                    src="/images/poster3.jpg"
+                    width={158}
+                    height={48}
+                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                  />
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                  </div>
+                  <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+                    <div className="relative">
+                    <Image
+                    alt="SavvyCal"
+                    src="/images/Wallpaperbloodonate.jpg"
+                    width={158}
+                    height={48}
+                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                  />
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                    <div className="relative">
+                    <Image
+                    alt="SavvyCal"
+                    src="/images/poster5.jpg"
+                    width={158}
+                    height={48}
+                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                  />
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
           <div className="bg-red-300 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -215,7 +312,7 @@ export default function Page() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="mx-auto max-w-2xl lg:max-w-none">
                 <h2 className="text-lg font-semibold leading-8 text-gray-900">
-                  Trusted by the world’s most innovative teams
+                  Trusted by the most reputed hospitals
                 </h2>
                 <div className="mx-auto mt-10 grid grid-cols-4 items-start gap-x-8 gap-y-10 sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:grid-cols-5">
                   <Image
@@ -258,6 +355,21 @@ export default function Page() {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </main>
 
       <footer className="bg-red-200">
