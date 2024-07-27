@@ -1,6 +1,6 @@
 // models/donarModel.js or models/donarModel.ts
 
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const DonarSchema = new mongoose.Schema({
   name: {
@@ -34,4 +34,4 @@ const DonarSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Donar || mongoose.model('Donar', DonarSchema);
+export default mongoose.models.Donar || mongoose.model("Donar", DonarSchema);
