@@ -1,23 +1,13 @@
 "use client";
 
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import Fuse from "fuse.js";
 import axios from "axios";
 import toast from "react-hot-toast";
 import React, { useEffect } from "react";
 import Link from "next/link";
 
 export default function RequestForm() {
-  const people = [
-    {
-      name: "Lindsay Walton",
-      title: "Front-end Developer",
-      email: "lindsay.walton@example.com",
-      role: "Member",
-    },
-    // More people...
-  ];
   const navigation = [
     { name: "Request Form", href: "/requestForm" },
     { name: "Donors", href: "/donars" },
@@ -33,25 +23,25 @@ export default function RequestForm() {
     weight: "",
     bloodGroup: "",
   });
+
   const [receiverList, setReceiverList] = React.useState([]);
-  console.log(receiver, "form submitted 1");
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [filteredReceiverList, setFilteredReceiverList] = React.useState([]);
+  const [selectedBloodGroup, setSelectedBloodGroup] = React.useState("");
+
+  const fuseOptions = {
+    keys: ["name", "bloodGroup"],
+    threshold: 0.3,
+  };
+  
+  const fuse = new Fuse(receiverList, fuseOptions);
 
   const onRequestingSubmit = async (event: any) => {
     event.preventDefault();
-;
-
     try {
-      const receiverData = receiver;
-      console.log(receiverData, "receiverData");
-      // setLoading(true);
-      const response = await axios.post("/api/users/receiverForm", receiver);
-
-      console.log(response, "apiiii");
+      await axios.post("/api/users/receiverForm", receiver);
       location.reload();
-      // route.push('/login');
-      // routeToLogin();
     } catch (error: any) {
-      console.log(error.message, "error during submitting");
       toast.error(error.message);
     }
   };
@@ -60,10 +50,36 @@ export default function RequestForm() {
     try {
       const response = await axios.get("/api/users/receiverForm");
       setReceiverList(response.data);
-      console.log(response.data, "get apiii");
+      setFilteredReceiverList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    applyFilters(query, selectedBloodGroup);
+  };
+
+  const handleBloodGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const group = e.target.value;
+    setSelectedBloodGroup(group);
+    applyFilters(searchQuery, group);
+  };
+
+  const applyFilters = (search: string, bloodGroup: string) => {
+    let result = receiverList;
+
+    if (search) {
+      result = fuse.search(search).map((result) => result.item);
+    }
+
+    // if (bloodGroup) {
+    //   result = result.filter((receiver) => receiver.bloodGroup === bloodGroup);
+    // }
+
+    setFilteredReceiverList(result);
   };
 
   useEffect(() => {
@@ -77,20 +93,9 @@ export default function RequestForm() {
           aria-label="Global"
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         >
-          <div className="flex lg:flex-1">
-      <Link href="/" className="text-md font-bold leading-8 text-red-900">
-        BLOOD CONNECT
-      </Link>
-    </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6" />
-            </button>
-          </div>
+          <Link href="/" className="text-md font-bold leading-8 text-red-900">
+            BLOOD CONNECT
+          </Link>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <a
@@ -102,18 +107,10 @@ export default function RequestForm() {
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
         </nav>
       </header>
 
-      <form
+<form
         onSubmit={onRequestingSubmit}
         className="mb-8 space-y-4 mt-20 pt-8 pl-72 bg-red-100"
       >
@@ -244,105 +241,89 @@ export default function RequestForm() {
       </form>
 
       <div className="bg-red-200 px-4 sm:px-6 lg:px-8 pb-8">
-      <div className="mt-4 pt-4 flex items-center justify-between">
-  <div className="sm:flex-auto">
-    <h1 className="px-8 text-xl font-semibold leading-7 text-gray-900">
-      Request List
-    </h1>
-    <p className="px-8 mt-2 text-sm text-gray-600">
-      A list of all the people requesting for blood.
-    </p>
-  </div>
-  <div className="ml-8">
-    <label htmlFor="bloodGroupFilter" className="mr-3 text-sm font-medium text-gray-700">
-      Filter by Blood Group:
-    </label>
-    <select
-      id="bloodGroupFilter"
-      className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      style={{ minWidth: '150px' }}
-      // value={bloodGroup}
-      // onChange={(e) => setBloodGroup(e.target.value)}
-    >
-      <option value="">All</option>
-      <option value="A+">A+</option>
-      <option value="A-">A-</option>
-      <option value="B+">B+</option>
-      <option value="B-">B-</option>
-      <option value="AB+">AB+</option>
-      <option value="AB-">AB-</option>
-      <option value="O+">O+</option>
-      <option value="O-">O-</option>
-    </select>
-  </div>
-</div>
-
+        <div className="mt-4 pt-4 flex items-center justify-between">
+          <div className="sm:flex-auto">
+            <h1 className="px-8 text-xl font-semibold leading-7 text-gray-900">
+              Receiver List
+            </h1>
+            <p className="px-8 mt-2 text-sm text-gray-600">
+              A list of all the people requesting blood.
+            </p>
+          </div>
+          <div className="ml-8">
+            <label
+              htmlFor="search"
+              className="mr-3 text-sm font-medium text-gray-700"
+            >
+              Search by Name:
+            </label>
+            <input
+              type="text"
+              id="search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+              placeholder="Search by name..."
+            />
+          </div>
+          <div className="ml-8">
+            <label
+              htmlFor="bloodGroupFilter"
+              className="mr-3 text-sm font-medium text-gray-700"
+            >
+              Filter by Blood Group:
+            </label>
+            <select
+              id="bloodGroupFilter"
+              className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+              value={selectedBloodGroup}
+              onChange={handleBloodGroupChange}
+              style={{ minWidth: "150px" }}
+            >
+              <option value="">All</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+        </div>
 
         <div className="mt-8 flow-root">
           <div className="overflow-x-auto">
-            <div className=" inline-block min-w-full  align-middle sm:px-6 lg:px-8">
+            <div className="inline-block min-w-full align-middle sm:px-6 lg:px-8">
               <table className="bg-red-300 min-w-full divide-gray-300">
                 <thead>
                   <tr>
-                    <th
-                      scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Phone Number
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      DOB
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Blood Group
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Weight
-                    </th>
+                    {/* Table headings */}
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>DOB</th>
+                    <th>Blood Group</th>
+                    <th>Email</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white">
-                  {receiverList.map((list: any) => (
+                  {filteredReceiverList.map((list: any) => (
                     <tr key={list.email} className="even:bg-gray-50">
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
                         {list.name}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {list.phoneNumber}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {list.dateOfBirth}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {list.bloodGroup}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {list.weight}
-                      </td>
-                      {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit<span className="sr-only">, {person.name}</span>
-                        </a>
-                      </td> */}
+                      <td>{list.phoneNumber}</td>
+                      <td>{list.dateOfBirth}</td>
+                      <td>{list.bloodGroup}</td>
+                      <td>{list.email}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              {filteredReceiverList.length === 0 && (
+                <p className="mt-4 text-center text-sm">No results found</p>
+              )}
             </div>
           </div>
         </div>
